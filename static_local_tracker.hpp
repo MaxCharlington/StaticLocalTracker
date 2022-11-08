@@ -109,7 +109,7 @@ inline std::shared_mutex _global_static_tracker_mtx;
 
 
 // Adds static local variable to global tracking
-#define STATIC_LOCAL_TRACK(var) static auto _tracker = []{                                                                   \
+#define STATIC_LOCAL_TRACK(var) [[maybe_unused]] static auto _tracker = []{                                                                   \
     std::unique_lock lk{StaticLocalTracker::_global_static_tracker_mtx};                                                     \
     StaticLocalTracker::_track_impl<std::decay_t<decltype(var)>>(var, StaticLocalTracker::VarName{std::string_view{#var}});  \
     return 0;                                                                                                                \
