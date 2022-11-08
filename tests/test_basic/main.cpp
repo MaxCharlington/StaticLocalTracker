@@ -9,13 +9,6 @@ void f() {
 int main() {
     f();
 
-    // auto* some_num_ptr = static_local::get<int>(VarName{"some_num"});
-    // if (some_num_ptr == nullptr)
-    //     return 1;
-    // else
-    //     return *some_num_ptr;
-
-
     int some_num;
 
     STATIC_LOCAL_COPY_TO(some_num);
